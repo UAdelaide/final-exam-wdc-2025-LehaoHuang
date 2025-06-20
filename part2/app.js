@@ -17,3 +17,13 @@ app.use('/api/users', userRoutes);
 
 // Export the app instead of listening here
 module.exports = app;
+
+// log out and clean the cookie
+app.get('/logout', (req, res)=>{
+    req.session.destroy((err)=>{
+        if(err){
+            console.error('Logout error:',err);
+        }
+        res.redirect('/login.html');
+    })
+});
