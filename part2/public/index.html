@@ -17,6 +17,19 @@
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
   </div>
 
+  <div id="dogContainer">
+    <table id="dogTable">
+      <thead>
+      <tr>
+        <th>name</th>
+        <th>size</th>
+        <th>Owner</th>
+      </tr>
+      </thead>
+      <tbody id="dogInformation"></tbody>
+    </table>
+  </div>
+
   <script>
     const { createApp } = Vue;
     createApp({

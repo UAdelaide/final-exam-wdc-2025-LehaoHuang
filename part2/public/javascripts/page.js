@@ -216,3 +216,33 @@ async function getCurrentUser() {
     const res = await fetch('/api/users/me');
     return await res.json();
 }
+
+//Fetching the information of dogs
+async function displayDogList() {
+    try {
+        const response = await fetch('/api/dogs');
+        const doglist = await response.json();
+        const tableBody = document.getElementById('dogInformation');
+
+        doglist.forEach(dog => {
+            const row = document.createElement('tr');
+
+            const dog_name = document.createElement('td');
+            dog_name.textContent = dog.dog_name;
+
+            const dog_size = document.createElement('td');
+            dog_size.textContent = dog.dog_size;
+
+            const dog_owner = document.createElement('td');
+            dog_owner,textContent = dog.owner_username;
+
+            row.appendChild(dog_name);
+            row.appendChild(dog_size);
+            row.appendChild(dog_owner);
+
+            tableBody.appendChild(row);
+        });
+    } catch (err) {
+        console.error('Failed to load dog data')
+    }
+}
