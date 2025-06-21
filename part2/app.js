@@ -7,7 +7,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static('public'));
+
 
 // Routes
 const walkRoutes = require('./routes/walkRoutes');
@@ -27,4 +27,9 @@ app.get('/logout', (req, res)=>{
         }
         res.redirect('/login.html');
     })
+});
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, ()=>{
+    console.log(`Server is running`);
 });
