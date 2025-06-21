@@ -1,12 +1,12 @@
 app.get('/api/dogs', async(req, res) => {
     try {
-        const [rows] = await pool.query('
-            SELECT d.dog_name, d.size, u.username AS owner_username
-            FROM Dogs d
-            JOIN Users u ON d.owner_id = u.user_id
-            ');
-            res.json(rows);
+        const [result] = await pool.query(
+            'SELECT Dogs.dog_name, Dogs.size, Owners.username AS owner_username' +
+            'FROM Dogs INNER JOIN Users AS Owners ON Dogs.onwer_id = Owner.user_id'
+            
+            );
+            res.json(result);
     } catch (err){
-        res.status(500).json({error:'Failed to fetch dogs'});
+        res.json({error:'Not able to access dogs'});
     }
 });
