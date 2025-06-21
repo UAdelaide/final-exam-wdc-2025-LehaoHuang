@@ -211,3 +211,8 @@ function logout(){
     xmlhttp.send();
 
 }
+//This function use to fetch User in databases
+async function getCurrentUser() {
+    const res = await fetch('/api/users/me');
+    return await res.json();
+}
